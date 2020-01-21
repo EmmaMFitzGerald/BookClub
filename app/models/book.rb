@@ -12,6 +12,8 @@ class Book < ApplicationRecord
 
   before_save :titleize_attrs #titleize's attributes automatically
 
+  scope :search, -> (parameter) {where("lower(title) LIKE :search", search: "%#{parameter}%")   }
+
   def titleize_attrs
     self.title = title.titleize
     self.author = author.titleize

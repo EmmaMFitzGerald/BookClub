@@ -40,8 +40,17 @@ class BooksController < ApplicationController
         redirect_to books_path
     end 
 
+    def search
+        if params[:search].blank?  
+          redirect_to(root_path, alert: "Empty field!") and return  
+        else  
+          @parameter = params[:search].downcase  
+          @results = Book.search(@parameter)
+        end  
+    end 
+
     private
     def book_params
-        params.require(:book).permit(:title, :author, :genre, :blurb) #specify the only information we want to allow in
+        params.require(:book).permit(:title, :author, :genre, :blurb, :search) #specify the only information we want to allow in
     end 
 end

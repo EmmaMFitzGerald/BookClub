@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   root 'sessions#home' #created root route
 
+  get '/search' => 'books#search', :as => 'search_page' #search toute
+
   #route to sign up
   get '/signup' => 'users#new' #creates custom route
   post '/signup' => 'users#create'
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   resources :books do
     resource :comments
   end 
-  
+
   resources :comments
   resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
