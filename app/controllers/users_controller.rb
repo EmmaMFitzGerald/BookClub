@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     def show
         redirect_if_not_logged_in #do not let !logged_in people on to users show page
         @user = User.find_by_id(params[:id]) #show the signed in users show page
+        @books = current_user.books.alpha
     end 
 
     private

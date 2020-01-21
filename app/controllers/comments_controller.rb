@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     end 
 
     def new
-        @books = current_user.books
+        @books = current_user.books #will be used to check the user has a book to add notes to
         if params[:book_id] && @book = Book.find_by_id(params[:book_id])
         #    if @book = current_user.books.find_by_id(params[:book_id])
             #checks if the route is nested by determing the book_id then sets the book
@@ -38,20 +38,28 @@ class CommentsController < ApplicationController
     def edit
         @comment = Comment.find(params[:id])
         @book = @comment.book
+        if !@comment || @comment.user != current_user
+            redirect_to comments_path 
+        end
     end 
 
     def update
-        if @comment.update(comment_params) 
-            redirect_to book_comments_path(@comment.book.id) #pass in the book id as an argument
-        else
-            render :edit
+        if !@comment || @comment.user != current_user
+            if @comment.update(comment_params) 
+                redirect_to book_comments_path(@comment.book.id) #pass in the book id as an argument
+            else
+                render :edit
+            end
         end
     end 
 
     def destroy
         @comment = Comment.find(params[:id])
-        @comment.destroy
-        redirect_to book_comments_path(@comment.book.id)
+        if !@comment || @comment.user != current_user #if comment returns fault, or if the current user did not make the comment, comment can not be deleted
+            redirect_to book_comments_path(@comment.book.id)
+        else
+            @comment.destroy #if it passes those checks and the comment belongs to the user, then the comment can be deleted
+        end 
     end 
 
     private
