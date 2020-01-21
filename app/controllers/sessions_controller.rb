@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     end 
 
     def destroy
-        sessions.clear #clear the sessions hash
+        session.clear #clear the sessions hash, ending the session
         redirect_to root_path #redirect to homepage once logged out
     end
 
