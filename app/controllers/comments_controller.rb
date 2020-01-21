@@ -2,12 +2,13 @@ class CommentsController < ApplicationController
     before_action :set_comment, only: [:edit, :update]
 
     def index
-        if params[:book_id] && @book = Book.find_by_id(params[:book_id])
+        @comments = current_user.comments
+        # if params[:book_id] && @book = Book.find_by_id(params[:book_id])
         #checks if the route is nested by determing the book_id then sets the book
-            @comments = @books.comments.order_by_chapter
-        else
-            @comments = Comment.all.order_by_chapter
-        end 
+            # @comments = @books.comments.order_by_chapter
+        # else
+            # @comments = Comment.all.order_by_chapter
+        # end 
     end 
 
     def new

@@ -1,13 +1,8 @@
-<% if @book %>
-    <h1>Notes for <%= @book.title %>
-    <ul>
-        <% @comments.each do |comment|%>
-        <li><%= comment.chapter %>: <%= comment.content %></li>
-        <li>By <%= comment.user.username %>
-    <% if current_user == comment.user %>
-        <%= link_to "Edit Notes" , edit_comment_path(comment)%>
-        <%= link_to "Delete Note", comment_path(comment)%>
-    <% end %>
-    <% end %>
-<%end%>
-</ul>
+<h1>All Your Comments</h1>
+    <% @comments.each do |comment| %>
+        <h1>Book title: <%= comment.book.title %><h1>
+        <h2>Added by:<%= comment.book.user.username %><h1></h2>
+        <h2>Chapter: <%= comment.chapter %></h2>
+        <h2>Note: <%= comment.content%></h2>
+<%end %>
+   <%= link_to "Add another Note", new_comment_path %>
