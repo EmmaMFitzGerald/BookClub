@@ -1,7 +1,4 @@
-class SessionsController < ApplicationController
-
-    def home
-    end 
+class SessionsController < ApplicationController 
 
     def destroy
         session.clear #clear the sessions hash, ending the session

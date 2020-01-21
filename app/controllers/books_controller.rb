@@ -47,7 +47,7 @@ class BooksController < ApplicationController
 
     def search
         if params[:search].blank?  
-          redirect_to(root_path, alert: "Empty field!") and return  
+          redirect_to('/', alert: "Empty field!") and return  
         else  
           @parameter = params[:search].downcase  
           @results = Book.search(@parameter)
