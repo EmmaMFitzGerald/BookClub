@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 
     def new
         if params[:book_id] && @book = Book.find_by_id(params[:book_id])
+        #    if @book = current_user.books.find_by_id(params[:book_id])
             #checks if the route is nested by determing the book_id then sets the book
             @comment = @book.comments.build
         else 
