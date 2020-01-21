@@ -7,5 +7,7 @@
     <p>Genre: <%= book.genre %><p>
     <p>Blurb: <%= book.blurb %></p>
     <p><%= link_to "Add a Comment", new_book_comments_path(book.id) %> <!-- Pass in the book id as an argument to determine what url to go to-->
+    <p><%= link_to "Edit Book", edit_book_path(book.id) %>
+    <p><%= link_to "Delete Book", book_path(book), method: :delete, data: { confirm: "Are you sure you want to delete this book?" } %>
     </div>
 <% end %>

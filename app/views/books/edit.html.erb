@@ -1,0 +1,19 @@
+<h1>Edit <%= @book.title %>
+
+<%= form_for(@book) do |f| %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br><br>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+    <br><br>
+    <%= f.label :genre %>
+    <%= f.text_field :genre %>
+    <br><br>
+    <%= f.label :blurb %>
+    <%= f.text_field :blurb %>
+    <br><br>
+    <%= f.submit %>
+
+<% end %>

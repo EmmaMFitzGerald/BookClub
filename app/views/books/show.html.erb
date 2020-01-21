@@ -3,11 +3,12 @@
 <p><%= @book.genre %></p>
 <p><%= @book.blurb%></p>
 
-<%=link_to "See all comments", books_comments_path(@book)%>
+<%=link_to "See all comments", book_comments_path(@book)%>
 
-<%=link_to "Add new comment", new_book_comment_path(@book)%>
+<%=link_to "Add new comment", new_book_comments_path(@book)%>
 
 <p>Notes on this book<p>
-<% @book.comments.each do |comment| %>
-<%= comment.chapter %>
-<%= comment.content %> 
+    <% @book.comments.each do |comment| %>
+    <p>Chapter: <%= comment.chapter %></p>
+    <p>Notes: <%= comment.content %></p>
+<% end %>
