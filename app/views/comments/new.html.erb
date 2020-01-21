@@ -1,13 +1,16 @@
-<%  if @book %> <!-- if the comment is associated with a book -->
-<h1>New Comment for <%= @book.title %>!</h1>
+<% if @comment.book %> <!-- if the comment is associated with a book -->
+<h1>New Comment for <%= @comment.book.title %>!</h1>
 <% else %>
 <h1> New Note <h1>
 <% end %>
-<%= form_for([@book, @comment]) do |f| %>
 
-<% if !@book %> <!-- if the comment is not associated with a book -->
+<%= form_for([@comment.book, @comment]) do |f| %>
+
+<% if !@comment.book%> <!-- if the comment is not associated with a book -->
     <%= f.label :book %>    
-    <%= f.collection_select :book_id, Book.all, :id, :title %>
+    <%= f.collection_select :book_id, Book.all, :id, :title %> <!-- allow users to select which book they want to comment on -->
+<% else %>
+    <%= f.hidden_field :book_id %> <!-- set the book id automatically -->
  <% end %>   
     <%= f.label :chapter %>
     <%= f.number_field :chapter %>
@@ -15,5 +18,5 @@
     <%= f.label :content %>
     <%= f.text_field :content %>
 
-    <%= f.submit%>
+    <%= f.submit %>
 <% end %>

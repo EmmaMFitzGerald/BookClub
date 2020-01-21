@@ -13,8 +13,8 @@ class CommentsController < ApplicationController
             #checks if the route is nested by determing the book_id then sets the book
             @comment = @book.comments.build
         else 
-        @error = "This book doesn't exist" if params[:book_id]
-        @comment = Comment.new
+            @error = "This book doesn't exist" if params[:book_id]
+            @comment = Comment.new
         end 
     end 
 
@@ -28,7 +28,8 @@ class CommentsController < ApplicationController
     end 
 
     def show 
-        @comment = Comment.find_by(id: params[:id])
+        @book = Book.find_by_id(params[:book_id])
+        @comments = @book.comments
     end 
 
     def edit

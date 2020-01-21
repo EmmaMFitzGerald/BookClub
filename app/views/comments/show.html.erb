@@ -1,1 +1,5 @@
-one comment
+<h1><%= @book.title %>'s Notes </h1>
+<p><% @book.comments.each do |comment| %></p>
+<p>Chapter: <%= comment.chapter %></p>
+<p>Notes: <%= comment.content %></p>
+<% end %>

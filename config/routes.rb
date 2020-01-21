@@ -13,12 +13,11 @@ Rails.application.routes.draw do
   #route to logout
   delete '/logout' => 'sessions#destroy'
 
-  resources :comments
-  resources :users do 
-    resources :books, only: [:new, :create, :index]
-  end 
   resources :books do
-    resource :comments, only: [:new, :create, :index]
+    resource :comments
   end 
+  
+  resources :comments
+  resources :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

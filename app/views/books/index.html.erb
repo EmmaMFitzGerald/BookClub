@@ -6,5 +6,6 @@
     <p><%= book.author %><p>
     <p><%= book.genre %><p>
     <p><%= book.blurb %></p>
+    <p><%= link_to "Add a Comment", new_book_comments_path(book.id) %> <!-- Pass in the book id as an argument to determine what url to go to-->
     </div>
 <% end %>

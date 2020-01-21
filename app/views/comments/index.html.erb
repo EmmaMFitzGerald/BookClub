@@ -1,1 +1,8 @@
-All Comments
+<% if @book %>
+<h1>Notes for <%= @book.title %>
+<% end %>
+<ul>
+<% @comments.each do |comment|%>
+  <li><%= comment.chapter %>: <%= comment.content %></li>
+<% end %>
+</ul>
