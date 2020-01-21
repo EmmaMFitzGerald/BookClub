@@ -5,5 +5,6 @@
 <% @comments.each do |comment|%>
   <li><%= comment.chapter %>: <%= comment.content %></li>
   <%= link_to "Edit Notes" , edit_comment_path(comment)%>
+  <%= link_to "Delete Note", comment_path(comment)%>
 <% end %>
 </ul>

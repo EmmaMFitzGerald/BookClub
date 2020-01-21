@@ -6,9 +6,9 @@
 
 <%= form_for([@comment.book, @comment]) do |f| %>
 
-<% if !@comment.book%> <!-- if the comment is not associated with a book -->
-    <%= f.label :book %>    
-    <%= f.collection_select :book_id, Book.all, :id, :title %> <!-- allow users to select which book they want to comment on -->
+<% if !@comment.book %> <!-- if the comment is not associated with a book -->
+        <%= f.label :book %>    
+         <%= f.collection_select :book_id, Book.all, :id, :title %> <!-- allow users to select which book they want to comment on -->
 <% else %>
     <%= f.hidden_field :book_id %> <!-- set the book id automatically -->
  <% end %>   
