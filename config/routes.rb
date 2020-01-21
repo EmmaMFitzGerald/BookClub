@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
   
-  root 'sessions#home' #created root route
+  #created custom root route
+  root 'sessions#home' 
 
-  get '/search' => 'books#search', :as => 'search_page' #search toute
+  #search route
+  get '/search' => 'books#search', :as => 'search_page' 
 
-  #route to sign up
-  get '/signup' => 'users#new' #creates custom route
+  #custome routes to sign up
+  get '/signup' => 'users#new'
   post '/signup' => 'users#create'
   
   #route to login
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+
+  #omniauth callback route
+  get '/auth/google_oauth2/callback' => 'sessions#google'
 
   #route to logout
   delete '/logout' => 'sessions#destroy'
