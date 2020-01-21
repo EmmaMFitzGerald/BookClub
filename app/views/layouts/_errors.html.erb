@@ -1,3 +1,5 @@
+<!-- This will display the reason(s) why an object won't save -->
+
 <% if object.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(object.errors.count, "error") %> prohibited this from being saved:</h2>
@@ -10,4 +12,3 @@
   </div>
 <% end %>
 
-<!-- This will display the reason why an object won't save -->

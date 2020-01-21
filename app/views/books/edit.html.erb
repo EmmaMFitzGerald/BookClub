@@ -1,6 +1,6 @@
 <h1>Edit <%= @book.title %>
 
-
+<%= render partial: 'layouts/errors', locals: {object: @book} %> <!-- look for the errors partial to tell user the problems -->
 
 <%= form_for(@book) do |f| %>
 

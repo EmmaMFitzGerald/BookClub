@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     end 
 
     def show
-        @book = Book.find_by_id(params[:book_id])
+        @book = Book.find_by_id(params[:book_id])     
     end 
 
     def edit

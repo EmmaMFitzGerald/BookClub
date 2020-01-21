@@ -1,12 +1,12 @@
 <% if @book.comments.any? %>
         <h1><%= @book.title %>'s Notes</h1>
-        <p><% @book.comments.each do |comment| %></p>
+        <p><% @book.comments.order_by_chapter.each do |comment| %></p> <!-- display the notes in order by chapter-->
         <p>Chapter: <%= comment.chapter %></p>
         <p>Notes: <%= comment.content %></p>
-        <%= link_to "Add Another Note For Book: #{@book.title}", new_book_comments_path(@book)%>
         <%= link_to "Edit Notes" , edit_comment_path(comment)%>
         <%= link_to "Delete Note", comment_path(comment), method: :delete, data: { confirm: "Are you sure you want to delete this note?" } %>
         <% end %>
+        <br><%= link_to "Add Another Note For Book: #{@book.title}", new_book_comments_path(@book)%>
 <% else %>
      <p>This Book Doesn't have any notes yet. <%=link_to "Click here", new_book_comments_path(@book)%> to add one!<p>     
 <%end%>

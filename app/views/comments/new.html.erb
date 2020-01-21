@@ -1,7 +1,7 @@
 <% if @comment.book %> <!-- if the comment is associated with a book -->
-<h1>New Comment for <%= @comment.book.title %>!</h1>
+    <h1>New Comment for <%= @comment.book.title %>!</h1>
 <% else %>
-<h1> New Note <h1>
+    <h1> New Note <h1>
 <% end %>
 
 <%= form_for([@comment.book, @comment]) do |f| %>
@@ -9,8 +9,8 @@
 <%= render partial: 'layouts/errors', locals: {object: @comment} %> <!-- look for the errors partial to tell user the problems -->
 
 <% if !@comment.book %> <!-- if the comment is not associated with a book -->
-        <%= f.label :book %>    
-        <%= f.collection_select :book_id, current_user.books, :id, :title %> <!-- allow users to select which book they want to comment on, can only comment on books they have created -->
+    <%= f.label :book %>    
+    <%= f.collection_select :book_id, current_user.books, :id, :title %> <!-- allow users to select which book they want to comment on, can only comment on books they have created -->
 <% else %>
     <%= f.hidden_field :book_id %> <!-- set the book id automatically -->
  <% end %>   
