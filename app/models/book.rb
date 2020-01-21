@@ -1,18 +1,16 @@
 class Book < ApplicationRecord
-  validates :title, presence: :true, length: {minimum: 2, maximum: 140 }
-  validates :author, presence: :true, length: {minimum: 2, maximum: 500} 
-  validates :genre, presence: :true, length: {minimum: 2, maximum: 500} 
-  validates :blurb, presence: :true, length: {minimum: 2, maximum: 500} 
-
-  scope :alpha, -> { order(:title) }
+  validates :title, :author, :genre, :blurb, presence: :true, length: {minimum: 2}
+  validates :title, uniqueness: :true
 
   belongs_to :user
   has_many :comments, :dependent => :destroy #deletes comments associated with a book
   has_many :users, through: :comments
 
-  before_save :titleize_attrs #titleize's attributes automatically
+  scope :alpha, -> { order(:title) } #display books in alphabetical order
 
-  scope :search, -> (parameter) {where("lower(title) LIKE :search", search: "%#{parameter}%")   }
+  scope :search, -> (parameter) {where("lower(title) LIKE :search", search: "%#{parameter}%")}
+
+  before_save :titleize_attrs #titleize's attributes automatically
 
   def titleize_attrs
     self.title = title.titleize

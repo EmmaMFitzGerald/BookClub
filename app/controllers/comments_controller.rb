@@ -4,9 +4,9 @@ class CommentsController < ApplicationController
     def index
         if params[:book_id] && @book = Book.find_by_id(params[:book_id])
         #checks if the route is nested by determing the book_id then sets the book
-            @comments = @books.comments.ordered_by_chapter
+            @comments = @books.comments.order_by_chapter
         else
-            @comments = Comment.all.ordered_by_chapter
+            @comments = Comment.all.order_by_chapter
         end 
     end 
 
