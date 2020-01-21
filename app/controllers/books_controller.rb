@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
     def index
-        @books = current_user.books.all
+        @books = current_user.books.alpha
     end 
     
     def new
@@ -11,7 +11,7 @@ class BooksController < ApplicationController
     def create
         @book = current_user.books.build(book_params) #book created belongs to the the current user
         if @book.save 
-            redirect_to books_path #if the book saves there haven't been any errors, so can show all the books
+            redirect_to books_path(@book) #if the book saves there haven't been any errors, so can show all the books
         else 
             render :new #have to retry entering information
         end 

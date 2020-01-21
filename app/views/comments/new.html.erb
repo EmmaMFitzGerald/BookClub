@@ -8,7 +8,7 @@
 
 <% if !@comment.book %> <!-- if the comment is not associated with a book -->
         <%= f.label :book %>    
-         <%= f.collection_select :book_id, current_user.books, :id, :title %> <!-- allow users to select which book they want to comment on, can only comment on books they have created -->
+        <%= f.collection_select :book_id, current_user.books, :id, :title %> <!-- allow users to select which book they want to comment on, can only comment on books they have created -->
 <% else %>
     <%= f.hidden_field :book_id %> <!-- set the book id automatically -->
  <% end %>   

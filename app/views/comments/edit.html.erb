@@ -1,15 +1,14 @@
-<h1>Edit Note</h1>
+<h1>Edit Note for <%= @comment.book.title %> </h1>
 
 <%= form_for(@comment) do |f|%>
 
-    <%= f.label :book %>
-    <%= f.collection_select :book_id, current_user.books :id, :title %>
-
-   <%= f.label :chapter %>
+    <%= f.label :chapter %>
     <%= f.number_field :chapter %>
 
     <%= f.label :content %>
     <%= f.text_field :content %>
+
+    <%= f.hidden_field :book_id %>
 
     <%= f.submit %>
 

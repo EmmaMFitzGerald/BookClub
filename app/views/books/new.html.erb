@@ -1,5 +1,7 @@
 <h1>New Book</h1>
 
+<%= render partial: 'layouts/errors', locals: {object: @book} %> <!-- look for the errors partial to tell user the problems -->
+
 <%= form_for(@book) do |f| %>
 
     <%= f.label :title %>
