@@ -1,5 +1,9 @@
 class BooksController < ApplicationController
 
+    def index
+        @books = current_user.books.all
+    end 
+    
     def new
         @book = Book.new
     end 
@@ -11,6 +15,10 @@ class BooksController < ApplicationController
         else 
             render :new #have to retry entering information
         end 
+    end 
+
+    def show 
+        @book = Book.find_by(id: params[:id])
     end 
 
     private

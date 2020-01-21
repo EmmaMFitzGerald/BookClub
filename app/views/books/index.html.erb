@@ -1,7 +1,10 @@
-<h1><%= current_user.username%>'s Books </h1>
+<h1><%= current_user.username %>'s Books </h1>
 
-<%= @books.each do |book| %>
-
-
-
+<% @books.each do |book| %> 
+    <div>
+    <h2><%= book.title %></h2>
+    <p><%= book.author %><p>
+    <p><%= book.genre %><p>
+    <p><%= book.blurb %></p>
+    </div>
 <% end %>
