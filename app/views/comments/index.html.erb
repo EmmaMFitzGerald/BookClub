@@ -1,6 +1,6 @@
 <h1>All Your Comments</h1>
     <% @comments.each do |comment| %>
-        <h1>Book title: <%= comment.book.title %><h1>
+        <h1>Book title: <%= link_to comment.book.title, book_path(comment.book.id) %><h1>
         <h2>Added by:<%= comment.book.user.username %><h1></h2>
         <h2>Chapter: <%= comment.chapter %></h2>
         <h2>Note: <%= comment.content%></h2>

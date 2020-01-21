@@ -1,4 +1,4 @@
-<% if @books.any? %>
+<% if @books.any? %> <!-- making sure that the user has books to display -->
 
     <% @books.each do |book| %> 
 
@@ -17,8 +17,8 @@
 
     <% end %>
 
-<% else %>
+<% else %> <!-- What to do if theuser doesn't have any favourite books yet -->
 
     <h2>You haven't added any books yet, click <%=link_to "here", new_book_path %> to add you favourite</h2>
 
-<% end %>
+<% end %>   

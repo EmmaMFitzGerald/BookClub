@@ -20,31 +20,22 @@ class CommentsController < ApplicationController
     def create
         @comment = current_user.comments.build(comment_params)
         if @comment.save
-            redirect_to book_comments_path(@comment.book.id)
-        else 
-            render :new 
-        end 
-    end 
+          redirect_to book_comments_path(@comment.book.id)
+        else
+          render :new
+        end
+    end
+    
 
     def show
         @book = Book.find_by_id(params[:book_id])     
     end 
-
-    def edit
-        @comment = Comment.find(params[:id])
-        @book = @comment.book
-        if !@comment || @comment.user != current_user
-            redirect_to comments_path 
-        end
-    end 
-
+    
     def update
-        if !@comment || @comment.user != current_user
-            if @comment.update(comment_params) 
-                redirect_to book_comments_path(@comment.book.id) #pass in the book id as an argument
-            else
-                render :edit
-            end
+        if @comment.update(comment_params)
+            redirect_to comment_path(@comment)
+        else
+            render :edit
         end
     end 
 

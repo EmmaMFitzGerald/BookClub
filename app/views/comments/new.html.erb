@@ -1,11 +1,11 @@
-<% if @books.any?  %>
+
     <% if @comment.book %> <!-- if the comment is associated with a book -->
         <h1>New Comment for <%= @comment.book.title %>!</h1>
     <% else %>
         <h1> New Note <h1>
     <% end %>
 
-    <%= form_for([@comment.book, @comment]) do |f| %>
+    <%= form_for([@comment.book, @comment]) do |f| %> <!-- form for both nexted comments and not nested comments -->
 
     <%= render partial: 'layouts/errors', locals: {object: @comment} %> <!-- look for the errors partial to tell user the problems -->
 
@@ -23,6 +23,3 @@
 
         <%= f.submit %>
     <% end %>
-<% else %>
-    <h2>You must add a book first <%=link_to "click here", new_book_path %>
-<% end %>
