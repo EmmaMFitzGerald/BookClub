@@ -9,13 +9,19 @@ class CommentsController < ApplicationController
     end 
 
     def new
+        if params[:book_id] && @book = Book.find_by_id(params[:book_id])
+            #checks if the route is nested by determing the book_id then sets the book
+            @comment = @book.comments.build
+        else 
+        @error = "This book doesn't exist" if params[:book_id]
         @comment = Comment.new
+        end 
     end 
 
     def create
         @comment = current_user.comments.build(comment_params)
         if @comment.save
-            redirect_to comment_path
+            redirect_to comments_path
         else 
             render :new 
         end 
@@ -31,5 +37,10 @@ class CommentsController < ApplicationController
 
     def update
         @comment = Comment.find_by(id: params[:id])  
+    end 
+
+    private
+    def comment_params
+        params.require(:comment).permit(:chapter, :content, :book_id) #specify the only information we want to allow in
     end 
 end

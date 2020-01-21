@@ -12,6 +12,7 @@
   <body>
     <div>
     <% if logged_in? %> 
+    <%= current_user.username %> is logged in |
     <%= link_to 'Logout', logout_path, method: 'delete' %> |
     <%= link_to 'Add Book', new_book_path %> |
     <%= link_to 'All Books', books_path%> |
