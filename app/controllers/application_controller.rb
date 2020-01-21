@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     end 
 
     def logged_in?
-        !!session[:user_id] #double band returns true if there is session
+        !!session[:user_id] #double bang returns true if there is session
     end 
 
     def redirect_if_not_logged_in
