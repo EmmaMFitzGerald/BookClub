@@ -4,9 +4,9 @@
 <p>Blurb: <%= @book.blurb%></p>
 <p><%= @book.user.username %>'s Favourite Book</p>
 
-<%=link_to "See all comments", book_comments_path(@book)%>
+<%=link_to "See All Notes", book_comments_path(@book)%>
 
-<%=link_to "Add new comment", new_book_comments_path(@book)%>
+<%=link_to "Add New Note", new_book_comments_path(@book)%>
 
 <h2>Notes For This Book</h2>
     <% @book.comments.each do |comment| %>

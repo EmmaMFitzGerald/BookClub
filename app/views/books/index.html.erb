@@ -3,10 +3,10 @@
         <div>
         <h2><%= link_to book.title, book_path(book.id) %></h2>
         <h3>By: <%= book.author %> 
-        <p>Added by: <%=book.user.username %></h3>
+        <p>Added by: <%= book.user.username %></h3>
         <p>Genre: <%= book.genre %><p>
         <p>Blurb: <%= book.blurb %></p>
-        <p><%= link_to "Add a Comment", new_book_comments_path(book.id) %> <!-- Pass in the book id as an argument to determine what url to go to-->
+        <p><%= link_to "Add a Note", new_book_comments_path(book.id) %> <!-- Pass in the book id as an argument to determine what url to go to-->
         <% if current_user == book.user %> <!-- only allowed edit/delete your books -->
             <p><%= link_to "Edit Book", edit_book_path(book.id) %>
             <p><%= link_to "Delete Book", book_path(book), method: :delete, data: { confirm: "Are you sure you want to delete this book?" } %>

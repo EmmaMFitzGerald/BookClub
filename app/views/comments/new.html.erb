@@ -1,6 +1,6 @@
 
-    <% if @comment.book %> <!-- if the comment is associated with a book -->
-        <p>New Comment for <%= @comment.book.title %>!</p>
+    <% if @comment.book %> <!-- if the comment is associated with a book --> 
+        <p>New Note for <%= @comment.book.title %> </p>
     <% else %>
         <h2> New Note </h2>
     <% end %>
@@ -15,7 +15,7 @@
     <% else %>
         <p><%= f.hidden_field :book_id %></p> <!-- set the book id automatically -->
     <% end %>   
-       <p> <%= f.label :chapter %></p>
+        <p><%= f.label :chapter %></p>
         <p><%= f.number_field :chapter %></p>
 
         <p><%= f.label :content, "Note"%></p>
