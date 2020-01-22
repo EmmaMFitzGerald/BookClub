@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
 
     def index
-        # @books = current_user.books.alpha
         @books = Book.all
     end 
     
@@ -42,7 +41,7 @@ class BooksController < ApplicationController
             redirect_to books_path 
         else
             @book.destroy
-            redirect_to books_path 
+            redirect_to books_path #reloads the page to display updated list
         end 
     end 
 

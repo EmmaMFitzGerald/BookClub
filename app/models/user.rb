@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     validates :username, :email, presence: true
-    validates :email, :username, uniqueness: true
+    validates :email, :username, uniqueness: true #
     
     has_many :books
     has_many :comments

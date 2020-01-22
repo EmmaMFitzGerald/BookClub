@@ -1,5 +1,5 @@
 <% if @results.any? %> <!--- only want to display 'search results' if any are found -->
-    <h3>Search Result</h3>  
+    <h2>Search Result</h2>  
     <% @results.each do |result| %>  
         <%= link_to result.title, book_path(result.id) %><br> <!-- result.id will be the same as the book id -->
      <% end %>

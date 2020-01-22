@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
   validates :title, :author, :genre, :blurb, presence: :true, length: {minimum: 2}
-  validates :title, uniqueness: :true
+  validates :title, uniqueness: :true #do not want duplicate books added
 
   belongs_to :user
   has_many :comments, :dependent => :destroy #deletes comments associated with a book

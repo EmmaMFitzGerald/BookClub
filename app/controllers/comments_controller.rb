@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_action :set_comment, only: [:edit, :update]
+    before_action :set_comment, only: [:edit, :update] #find the comment before editing/updating
 
     def index
         @comments = current_user.comments
@@ -31,6 +31,9 @@ class CommentsController < ApplicationController
         @book = Book.find_by_id(params[:book_id])  
     end 
     
+    def edit
+    end
+
     def update
         if @comment.update(comment_params)
             redirect_to comment_path(@comment)
@@ -55,7 +58,7 @@ class CommentsController < ApplicationController
     end 
 
     def set_comment
-        @comment = Comment.find_by(id: params[:id])
+        @comment = Comment.find_by(id: params[:id]) #finds the right comment
         if !@comment
           flash[:message] = "Comment was not found"
           redirect_to comments_path

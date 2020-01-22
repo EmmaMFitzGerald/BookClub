@@ -8,7 +8,7 @@
     
         <div>
         <h2><%= link_to book.title, book_comments_path(book.id) %></h2>
-        <p>By: <%= book.author %><p>
+        <h3>By: <%= book.author %></h3>
         <p>Genre: <%= book.genre %><p>
         <p>Blurb: <%= book.blurb %></p>
         <p><%= link_to "Add a Comment", new_book_comments_path(book.id) %> <!-- Pass in the book id as an argument to determine what url to go to-->

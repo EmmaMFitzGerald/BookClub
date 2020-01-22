@@ -1,7 +1,7 @@
 <% if @book.comments.any? %>
         <h1><%= @book.title %>'s Notes</h1>
-        <p><% @book.comments.order_by_chapter.each do |comment| %></p> <!-- display the notes in order by chapter-->
-        <p>Chapter: <%= comment.chapter %></p>
+        <% @book.comments.order_by_chapter.each do |comment| %><!-- display the notes in order by chapter-->
+        <h2>Chapter: <%= comment.chapter %></h2>
         <p>Notes: <%= comment.content %></p>
         <p>By: <%= comment.user.username %></p>
         <% if current_user == comment.user %> <!-- users can only delete their own comments -->

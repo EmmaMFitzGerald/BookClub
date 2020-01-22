@@ -1,13 +1,11 @@
-<% if @books.any? %> <!-- making sure that the user has books to display -->
-
-    <% @books.alpha.each do |book| %> 
+<% @books.alpha.each do |book| %> 
 
         <div>
-        <h2><%= link_to book.title, book_comments_path(book.id) %></h2>
-        <p>By: <%= book.author %><p>
+        <h2><%= link_to book.title, book_path(book.id) %></h2>
+        <h3>By: <%= book.author %> 
+        <p>Added by: <%=book.user.username %></h3>
         <p>Genre: <%= book.genre %><p>
         <p>Blurb: <%= book.blurb %></p>
-        <p>Added by: <%=book.user.username %>
         <p><%= link_to "Add a Comment", new_book_comments_path(book.id) %> <!-- Pass in the book id as an argument to determine what url to go to-->
         <% if current_user == book.user %> <!-- only allowed edit/delete your books -->
             <p><%= link_to "Edit Book", edit_book_path(book.id) %>
@@ -16,9 +14,4 @@
         </div>
 
     <% end %>
-
-<% else %> <!-- What to do if theuser doesn't have any favourite books yet -->
-
-    <h2>You haven't added any books yet, click <%=link_to "here", new_book_path %> to add you favourite</h2>
-
-<% end %>   
+ 

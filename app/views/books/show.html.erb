@@ -10,7 +10,7 @@
 
 <h2>Notes For This Book</h2>
     <% @book.comments.each do |comment| %>
-        <p>Chapter: <%= comment.chapter %></p>
+        <h3>Chapter: <%= comment.chapter %></h3>
         <p>Notes: <%= comment.content %></p>
         <p>Note by: <%= comment.user.username %>
  <% end %>
