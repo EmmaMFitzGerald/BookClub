@@ -1,14 +1,16 @@
-<h1><%= @book.title %> </h1>
-<p><%= @book.author %></p>
-<p><%= @book.genre %></p>
-<p><%= @book.blurb%></p>
+<h1>Book title: <%= @book.title %> </h1>
+<p>Written by: <%= @book.author %></p>
+<p>Genre: <%= @book.genre %></p>
+<p>Blurb: <%= @book.blurb%></p>
+<p><%= @book.user.username %>'s Favourite Book</p>
 
 <%=link_to "See all comments", book_comments_path(@book)%>
 
 <%=link_to "Add new comment", new_book_comments_path(@book)%>
 
-<p>Notes on this book<p>
+<h2>Notes For This Book</h2>
     <% @book.comments.each do |comment| %>
-    <p>Chapter: <%= comment.chapter %></p>
-    <p>Notes: <%= comment.content %></p>
-<% end %>
+        <p>Chapter: <%= comment.chapter %></p>
+        <p>Notes: <%= comment.content %></p>
+        <p>Note by: <%= comment.user.username %>
+ <% end %>

@@ -1,8 +1,8 @@
 
     <% if @comment.book %> <!-- if the comment is associated with a book -->
-        <h1>New Comment for <%= @comment.book.title %>!</h1>
+        <p>New Comment for <%= @comment.book.title %>!</p>
     <% else %>
-        <h1> New Note <h1>
+        <h2> New Note </h2>
     <% end %>
 
     <%= form_for([@comment.book, @comment]) do |f| %> <!-- form for both nexted comments and not nested comments -->
@@ -10,16 +10,16 @@
     <%= render partial: 'layouts/errors', locals: {object: @comment} %> <!-- look for the errors partial to tell user the problems -->
 
     <% if !@comment.book %> <!-- if the comment is not associated with a book -->
-        <%= f.label :book %>    
-        <%= f.collection_select :book_id, current_user.books, :id, :title %> <!-- allow users to select which book they want to comment on, can only comment on books they have created -->
+        <p><%= f.label :book %>  </p>  
+        <p><%= f.collection_select :book_id, Book.all, :id, :title %></p> <!-- allow users to select which book they want to comment on -->
     <% else %>
-        <%= f.hidden_field :book_id %> <!-- set the book id automatically -->
+        <p><%= f.hidden_field :book_id %></p> <!-- set the book id automatically -->
     <% end %>   
-        <%= f.label :chapter %>
-        <%= f.number_field :chapter %>
+       <p> <%= f.label :chapter %></p>
+        <p><%= f.number_field :chapter %></p>
 
-        <%= f.label :content %>
-        <%= f.text_field :content %>
+        <p><%= f.label :content, "Note"%></p>
+        <p><%= f.text_field :content %></p>
 
         <%= f.submit %>
     <% end %>

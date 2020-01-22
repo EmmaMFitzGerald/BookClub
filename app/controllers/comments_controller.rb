@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     
 
     def show
-        @book = Book.find_by_id(params[:book_id])     
+        @book = Book.find_by_id(params[:book_id])  
     end 
     
     def update
@@ -45,6 +45,7 @@ class CommentsController < ApplicationController
             redirect_to book_comments_path(@comment.book.id)
         else
             @comment.destroy #if it passes those checks and the comment belongs to the user, then the comment can be deleted
+            redirect_to book_comments_path(@comment.book.id) #reload page to show updated list
         end 
     end 
 

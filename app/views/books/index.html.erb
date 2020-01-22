@@ -1,6 +1,6 @@
 <% if @books.any? %> <!-- making sure that the user has books to display -->
 
-    <% @books.each do |book| %> 
+    <% @books.alpha.each do |book| %> 
 
         <div>
         <h2><%= link_to book.title, book_comments_path(book.id) %></h2>

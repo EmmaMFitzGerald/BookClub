@@ -25,7 +25,8 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id #set the session id which logs them in
             redirect_to user_path(@user)
         else 
-            redirect_to '/' #if user doesn't save redirect to homepage
+            flash[:message] = 'There was a problem signing you in through Google. Please register or try signing in later.'
+            redirect_to '/login' #if user doesn't save redirect to homepage
         end 
     end 
 

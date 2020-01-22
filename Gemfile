@@ -37,7 +37,7 @@ gem 'omniauth'
 gem 'dotenv-rails'
 gem 'omniauth-google-oauth2'
 
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.4.1'
 
 
 group :development do

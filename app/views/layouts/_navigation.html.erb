@@ -1,0 +1,22 @@
+    <div>
+    <% if logged_in? %> <!-- only want to be able to see this navbar if you are logged in -->
+    <%= current_user.username %> is logged in |
+    <%= link_to 'Logout', logout_path, method: 'delete' %> |
+    <%= link_to 'Your Favourite Books', user_path(current_user.id)%> |
+    <%= link_to 'Add Book', new_book_path %> |
+    <%= link_to 'All Books', books_path%> |
+    <%= link_to 'Add a Note', new_comment_path%> |
+    <%= link_to 'All Your Notes', comments_path%> |
+    <%= form_tag(search_page_path, :method => "get", class: 'navbar-form navbar-left') do %>  
+        <div class="input-group">  
+          <%= search_field_tag :search, params[:search], placeholder: "Search for Book", class: "form-control" %>  
+            <div class="input-group-btn">  
+              <%= button_tag "Search", :class => 'btn btn-info',:name => nil%>  
+            </div>  
+        </div>  
+      <% end %>
+    <% else %> <!-- if not logged_in give users the option to log in or sign up -->
+    <%= link_to "Sign Up", signup_path %> | 
+    <%= link_to "Log in", login_path %> |
+    <%= link_to "Log in with Google", '/auth/google_oauth2'%>
+    <% end %>
