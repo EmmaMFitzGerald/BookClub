@@ -8,9 +8,11 @@
 
 <%=link_to "Add New Note", new_book_comments_path(@book)%>
 
-<h2>Notes For This Book</h2>
-    <% @book.comments.each do |comment| %>
-        <h3>Chapter: <%= comment.chapter %></h3>
-        <p>Notes: <%= comment.content %></p>
-        <p>Note by: <%= comment.user.username %>
- <% end %>
+<% if @book.comments.any? %> <!-- only show if there are notes -->
+    <h2>Notes For This Book</h2>
+        <% @book.comments.each do |comment| %>
+            <h3>Chapter: <%= comment.chapter %></h3>
+            <p>Notes: <%= comment.content %></p>
+            <p>Note by: <%= comment.user.username %>
+    <% end %>
+<% end %>

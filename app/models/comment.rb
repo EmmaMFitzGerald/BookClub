@@ -7,5 +7,5 @@ class Comment < ApplicationRecord
 
   
   scope :order_by_chapter, -> { order(:chapter) } #makes sure notes are kept in chapter order
-
+  
 end

@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 
     def create
         @comment = current_user.comments.build(comment_params)
-        @book = Book.find_by(params[:book_id])
+        @book = Book.find_by_id(params[:book_id])
         if @comment.save
           redirect_to book_path(@comment.book_id)
         else
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     end
     
     def show
-        @book = Book.find_by(params[:book_id])
+        @book = Book.find_by_id(params[:book_id])
     end 
     
     def edit
@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
 
     def destroy
         @comment = Comment.find(params[:id])
-        @book = Book.find_by(params[:book_id])
+        @book = Book.find_by_id(params[:book_id])
         if !@comment || @comment.user != current_user #if can't find a comment, or if the current user did not make the comment, comment can not be deleted
             redirect_to book_comments_path(@comment.book.id)
         else
