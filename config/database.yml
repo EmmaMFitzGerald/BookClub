@@ -79,4 +79,4 @@ production:
   database: BookClub
   pool: 5
   username: emmafitzgerald
-  password:
+  password: 
