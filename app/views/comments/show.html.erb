@@ -1,5 +1,4 @@
-<% if @book.comments.any? %>
-        <h1><%= @book.title %>'s Notes</h1>
+
         <% @book.comments.order_by_chapter.each do |comment| %><!-- display the notes in order by chapter-->
         <h2>Chapter: <%= comment.chapter %></h2>
         <p>Notes: <%= comment.content %></p>
@@ -9,6 +8,3 @@
         <% end %>
         <% end %>
         <br><%= link_to "Add Another Note For Book: #{@book.title}", new_book_comments_path(@book)%>
-<% else %>
-     <p>This Book Doesn't have any notes yet. <%=link_to "Click here", new_book_comments_path(@book)%> to add one!<p>     
-<%end%>

@@ -2,7 +2,7 @@
     <h1>All Your Notes</h1>
         <% @comments.each do |comment| %>
             <p>Book title: <%= link_to comment.book.title, book_path(comment.book.id) %></p>
-            <p>Book Added by: <%= comment.book.user.username %></p>
+            <p>Book Added by: <%= comment.book.user.username.titleize %></p>
             <p>Chapter: <%= comment.chapter %></p>
             <p>Note: <%= comment.content%></p>
                 <% if current_user == comment.user %> <!-- users can only edit their own comments -->
