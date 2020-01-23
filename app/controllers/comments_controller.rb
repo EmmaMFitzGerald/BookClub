@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
     before_action :set_comment, only: [:edit, :update] #find the comment before editing/updating
+    before_action :redirect_if_not_logged_in
 
     def index
-        @comments = current_user.comments
+        @comments = current_user.comments #only want to see the current user's comments
     end 
 
     def new
@@ -31,9 +32,8 @@ class CommentsController < ApplicationController
     end 
     
     def edit
-        # @comment = Comment.find_by_id(params[:id])
         @book = @comment.book
-        redirect_to route_path if !@comment || @comment.user != current_user
+        redirect_to route_path if !@comment || @comment.user != current_user #can only edit your own comments
     end
 
     def update
@@ -67,4 +67,8 @@ class CommentsController < ApplicationController
           redirect_to comments_path
         end
     end
+
+    def redirect_if_not_logged_in
+        redirect_to '/' if !logged_in? #do not want not logged on people accessing anything but the root route 
+    end 
 end

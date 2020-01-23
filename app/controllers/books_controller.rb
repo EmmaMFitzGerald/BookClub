@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+    before_action :redirect_if_not_logged_in
 
     def index
         @books = Book.all
@@ -18,7 +19,11 @@ class BooksController < ApplicationController
     end 
 
     def show 
-        @book = Book.find_by(id: params[:id])
+        if logged_in?
+            @book = Book.find_by(id: params[:id])
+        else
+            redirect_to '/'
+        end 
     end 
 
     def edit
@@ -37,7 +42,7 @@ class BooksController < ApplicationController
 
     def destroy
         @book = Book.find(params[:id])
-        if !@book || @book.user != current_user
+        if !@book || @book.user != current_user #can only delete your own books
             redirect_to books_path 
         else
             @book.destroy
@@ -57,5 +62,9 @@ class BooksController < ApplicationController
     private
     def book_params
         params.require(:book).permit(:title, :author, :genre, :blurb, :search) #specify the only information we want to allow in
+    end 
+
+    def redirect_if_not_logged_in
+        redirect_to '/' if !logged_in? #do not want not logged on people accessing anything but the root route 
     end 
 end
