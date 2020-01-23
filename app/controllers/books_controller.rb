@@ -12,7 +12,7 @@ class BooksController < ApplicationController
     def create
         @book = current_user.books.build(book_params) #book created belongs to the the current user
         if @book.save 
-            redirect_to books_path(@book) #if the book saves there haven't been any errors, so can show all the books
+            redirect_to book_path(@book.id) #if the book saves there haven't been any errors, so can show all the books
         else 
             render :new #have to retry entering information
         end 

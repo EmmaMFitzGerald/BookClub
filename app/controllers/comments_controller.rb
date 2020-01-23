@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
 
     def update
         if @comment.update(comment_params)
-            redirect_to comment_path(@comment)
+            redirect_to book_comments_path(@comment.book_id)
         else
             render :edit
         end
