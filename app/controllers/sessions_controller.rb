@@ -16,11 +16,11 @@ class SessionsController < ApplicationController
     def google #find or create a user using the attrs sent by google
         @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
             user.username = auth["info"]["first_name"]
-            user.password = SecureRandom.hex #assigns random password to the user
+            user.password = SecureRandom.hex(10) #assigns random password to the user
         end 
-        if @user.save 
+        if @user.save
             session[:user_id] = @user.id #set the session id which logs them in
-            redirect_to user_path(@user)
+            redirect_to user_path(@user.id)
         else 
             flash[:message] = 'There was a problem signing you in through Google. Please register or try signing in later.'
             redirect_to '/login' #if user doesn't save redirect to homepage
